@@ -5,13 +5,23 @@ import { checkAnswer } from "@/math/checkAnswer";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import PageCSS from "./page.module.css";
+import { generateDivQuestion } from "@/math/division";
+import { generateMultQuestion } from "@/math/multiplication";
 export default function Page() {
   const [question, setQuestion] = useState();
   const [answer, setAnswer] = useState();
   const [completed, setCompleted] = useState(false);
+  const [topic, setTopic] = useState("addition");
+
+  const topics = {
+    addition: generateAddQuestion(),
+    subtraction: generateMinQuestion(),
+    multiplication: generateMultQuestion(),
+    division: generateDivQuestion,
+  };
   useEffect(() => {
     async function getQA() {
-      const questionArray = await generateAddQuestion();
+      const questionArray = await topics[topic];
       if (questionArray !== undefined) {
         setQuestion([questionArray[0], questionArray[1]]);
         setAnswer(questionArray[2]);
