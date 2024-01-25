@@ -5,7 +5,7 @@ export default function Counter(props) {
   let counter = 0;
   return (
     <>
-      <div className={CounterCSS.counterBox}>{correct}/5</div>
+      <div className={CounterCSS.counterBox}>{correct}</div>
       <div className={CounterCSS.fillBox}></div>
     </>
   );

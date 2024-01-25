@@ -14,7 +14,6 @@ export default function Page() {
   const [answer, setAnswer] = useState();
   const [completed, setCompleted] = useState(false);
   const [topic, setTopic] = useState("addition");
-  const [userInput, setUserInput] = useState();
   const [correct, setCorrect] = useState(0);
   const topics = {
     addition: { function: generateAddQuestion(), operation: "+" },
@@ -48,13 +47,14 @@ export default function Page() {
     if (response) {
       toast.success("Correct Answer!");
       setCompleted(true);
-      setUserInput(0);
       setCorrect(correct + 1);
+      event.target.reset();
     } else {
       toast.error("Incorrect Answer :( Give it another go!");
       setCorrect(0);
     }
   }
+
   let render;
   if (question) {
     render = <div className={PageCSS.questionBox}>{question}</div>;
@@ -71,7 +71,6 @@ export default function Page() {
             type="number"
             name="answer"
             placeholder="Enter your answer here"
-            value={userInput}
             className={PageCSS.inputBox}
           />
           <button type="submit" className={PageCSS.submitButton}>
