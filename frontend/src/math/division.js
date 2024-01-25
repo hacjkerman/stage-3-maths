@@ -5,5 +5,5 @@ export async function generateDivQuestion() {
   const secondNum = Math.floor(Math.random() * 100);
   const answer = firstNum / secondNum;
 
-  return [firstNum, secondNum, answer];
+  return { firstNum, secondNum, answer };
 }
