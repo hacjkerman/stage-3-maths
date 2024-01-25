@@ -1,0 +1,22 @@
+.navBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.links {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.link {
+  list-style-type: none;
+  font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.link:hover {
+  cursor: pointer;
+}
