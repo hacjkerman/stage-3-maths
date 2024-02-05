@@ -1,4 +1,5 @@
 import NavCSS from "./Nav.module.css";
+import Link from "next/link";
 
 export default function Nav(props) {
   const setTopic = props.setTopic;
@@ -11,7 +12,7 @@ export default function Nav(props) {
             setTopic("addition");
           }}
         >
-          Addition
+          <Link href="/addition">Addition</Link>
         </li>
         <li
           className={NavCSS.link}
@@ -19,7 +20,7 @@ export default function Nav(props) {
             setTopic("subtraction");
           }}
         >
-          Subtraction
+          <Link href="/subtraction">Subtraction</Link>
         </li>
         <li
           className={NavCSS.link}
@@ -27,7 +28,7 @@ export default function Nav(props) {
             setTopic("multiplication");
           }}
         >
-          Multiplication
+          <Link href="/multiplication">Multiplication</Link>
         </li>
         <li
           className={NavCSS.link}
@@ -35,7 +36,7 @@ export default function Nav(props) {
           //   setTopic("division");
           // }}
         >
-          Division
+          <Link href="/division">Division</Link>
         </li>
       </ul>
     </div>

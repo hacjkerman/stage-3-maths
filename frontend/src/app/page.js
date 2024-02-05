@@ -1,14 +1,14 @@
 "use client";
-import { generateAddQuestion } from "@/math/addition";
-import { generateMinQuestion } from "@/math/subtraction";
-import { checkAnswer } from "@/math/checkAnswer";
+import { generateAddQuestion } from "../math/addition.js";
+import { generateMinQuestion } from "../math/subtraction.js";
+import { checkAnswer } from "../math/checkAnswer.js";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import PageCSS from "./page.module.css";
-import { generateDivQuestion } from "@/math/division";
-import { generateMultQuestion } from "@/math/multiplication";
-import Nav from "@/components/Nav/Nav";
-import Counter from "@/components/Counter/Counter";
+import { generateDivQuestion } from "../math/division.js";
+import { generateMultQuestion } from "../math/multiplication.js";
+import Nav from "../components/Nav/Nav.jsx";
+import Counter from "../components/Counter/Counter.js";
 export default function Page() {
   const [question, setQuestion] = useState();
   const [answer, setAnswer] = useState();

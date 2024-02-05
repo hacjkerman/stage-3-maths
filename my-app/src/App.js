@@ -16,14 +16,14 @@ function App() {
   const [topic, setTopic] = useState("addition");
   const [correct, setCorrect] = useState(0);
   const topics = {
-    addition: { function: generateAddQuestion(), operation: "+" },
-    subtraction: { function: generateMinQuestion(), operation: "-" },
-    multiplication: { function: generateMultQuestion(), operation: "*" },
-    division: { function: generateDivQuestion(), operation: "%" },
+    addition: { function: generateAddQuestion, operation: "+" },
+    subtraction: { function: generateMinQuestion, operation: "-" },
+    multiplication: { function: generateMultQuestion, operation: "*" },
+    division: { function: generateDivQuestion, operation: "%" },
   };
   useEffect(() => {
     async function getQA() {
-      const questionArray = await topics[topic].function;
+      const questionArray = await topics[topic].function("easy");
       if (questionArray !== undefined) {
         const questionStr =
           questionArray.firstNum.toString() +
