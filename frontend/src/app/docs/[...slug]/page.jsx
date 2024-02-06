@@ -1,7 +1,7 @@
-import Add from "../../addition/page";
-import Divide from "../../divide/page";
-import Minus from "../../subtract/page";
-import Multiply from "../../multiply/page";
+import Add from "../../addition/page.jsx";
+import Divide from "../../divide/page.jsx";
+import Minus from "../../subtract/page.jsx";
+import Multiply from "../../multiply/page.jsx";
 export default function Docs({ params }) {
   if (params.slug.length === 1) {
     switch (params.slug[0]) {
