@@ -61,7 +61,7 @@ export default function Page() {
   }
   return (
     <>
-      <Nav setTopic={setTopic} />
+      <Nav />
       <div className={PageCSS.main}>
         <Toaster />
         <Counter correct={correct} />

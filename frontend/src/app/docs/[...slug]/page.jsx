@@ -14,7 +14,11 @@ export default function Docs({ params }) {
       case "multiplication":
         return Multiply();
     }
-    return <h1>Viewing {params.slug[0]} page </h1>;
+    return (
+      <div>
+        <h1>Viewing {params.slug[0]} page </h1>;
+      </div>
+    );
   } else if (params.slug.length == 2) {
     return (
       <h1>
