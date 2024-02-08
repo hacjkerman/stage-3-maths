@@ -8,7 +8,7 @@ import PageCSS from "./page.module.css";
 import { generateDivQuestion } from "../math/division.js";
 import { generateMultQuestion } from "../math/multiplication.js";
 import Nav from "../components/Nav/Nav.jsx";
-import Counter from "../components/Counter/Counter.js";
+import Counter from "../components/counter/counter.js";
 export default function Page() {
   const [question, setQuestion] = useState();
   const [answer, setAnswer] = useState();
@@ -16,14 +16,15 @@ export default function Page() {
   const [topic, setTopic] = useState("addition");
   const [correct, setCorrect] = useState(0);
   const topics = {
-    addition: { function: generateAddQuestion(), operation: "+" },
-    subtraction: { function: generateMinQuestion(), operation: "-" },
-    multiplication: { function: generateMultQuestion(), operation: "*" },
-    division: { function: generateDivQuestion(), operation: "%" },
+    addition: { function: generateAddQuestion, operation: "+" },
+    subtraction: { function: generateMinQuestion, operation: "-" },
+    multiplication: { function: generateMultQuestion, operation: "*" },
+    division: { function: generateDivQuestion, operation: "%" },
   };
   useEffect(() => {
     async function getQA() {
-      const questionArray = await topics[topic].function;
+      const questionArray = await topics[topic].function("easy");
+      console.log(questionArray);
       if (questionArray !== undefined) {
         const questionStr =
           questionArray.firstNum.toString() +
