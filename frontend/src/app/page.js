@@ -7,8 +7,7 @@ import { Toaster, toast } from "react-hot-toast";
 import PageCSS from "./page.module.css";
 import { generateDivQuestion } from "../math/division.js";
 import { generateMultQuestion } from "../math/multiplication.js";
-import Nav from "../components/Nav/Nav.jsx";
-import Counter from "../components/counter/counter.js";
+import Counter from "../components/counter/counter.jsx";
 export default function Page() {
   const [question, setQuestion] = useState();
   const [answer, setAnswer] = useState();
