@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import question from "../../../components/question/Question.jsx";
 import PageCSS from "./page.module.css";
 import toast, { Toaster } from "react-hot-toast";
-import Counter from "../../../components/counter/counter.jsx";
+import Counter from "../../../components/Counter/Counter.jsx";
 import { checkAnswer } from "../../../math/checkAnswer.js";
 export default function Docs({ params }) {
   const [correct, setCorrect] = useState(0);
