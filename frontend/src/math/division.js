@@ -1,5 +1,5 @@
 import { difficulties } from "./difficulties.js";
-export async function generateDivQuestion(difficulty) {
+export function generateDivQuestion(difficulty) {
   const num = difficulties[difficulty];
   // MAYBE MORE COMPLICATED THAN THIS
   // IF DOING WHOLE NUMBER DIVISION
@@ -10,5 +10,3 @@ export async function generateDivQuestion(difficulty) {
 
   return { secondNum, firstNum, answer };
 }
-
-console.log(generateDivQuestion("easy"));

@@ -15,6 +15,7 @@ export default function Page() {
   const [completed, setCompleted] = useState(false);
   const [topic, setTopic] = useState("addition");
   const [correct, setCorrect] = useState(0);
+  const [difficulty, setDifficulty] = useState("easy");
   const topics = {
     addition: { function: generateAddQuestion, operation: "+" },
     subtraction: { function: generateMinQuestion, operation: "-" },
@@ -22,29 +23,26 @@ export default function Page() {
     division: { function: generateDivQuestion, operation: "%" },
   };
   useEffect(() => {
-    async function getQA() {
-      const questionArray = await topics[topic].function("easy");
-      console.log(questionArray);
-      if (questionArray !== undefined) {
-        const questionStr =
-          questionArray.firstNum.toString() +
-          " " +
-          topics[topic].operation +
-          " " +
-          questionArray.secondNum.toString();
-        setQuestion(questionStr);
-        setAnswer(questionArray.answer);
-        setCompleted(false);
-      }
+    const questionArray = topics[topic].function(difficulty);
+    console.log(questionArray);
+    if (questionArray !== undefined) {
+      const questionStr =
+        questionArray.firstNum.toString() +
+        " " +
+        topics[topic].operation +
+        " " +
+        questionArray.secondNum.toString();
+      setQuestion(questionStr);
+      setAnswer(questionArray.answer);
+      setCompleted(false);
     }
-    getQA();
-  }, [completed, topic]);
+  }, [completed, topic, difficulty]);
 
-  async function onSubmit(event) {
+  function onSubmit(event) {
     event.preventDefault();
     const num = event.target[0].value;
     // CHECK ANSWER
-    const response = await checkAnswer(Number(num), answer);
+    const response = checkAnswer(Number(num), answer);
     if (response) {
       toast.success("Correct Answer!");
       setCompleted(true);
@@ -62,7 +60,6 @@ export default function Page() {
   }
   return (
     <>
-      <Nav />
       <div className={PageCSS.main}>
         <Toaster />
         <Counter correct={correct} />

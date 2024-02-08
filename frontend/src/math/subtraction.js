@@ -1,5 +1,5 @@
 import { difficulties } from "./difficulties";
-export async function generateMinQuestion(difficulty) {
+export function generateMinQuestion(difficulty) {
   const num = difficulties[difficulty];
   let firstNum = Math.ceil(Math.random() * num + 1);
   let secondNum = Math.ceil(Math.random() * num + 1);
