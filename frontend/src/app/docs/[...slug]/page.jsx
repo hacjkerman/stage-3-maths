@@ -2,9 +2,8 @@
 import { useState, useEffect } from "react";
 import question from "../../../components/question/Question.jsx";
 import PageCSS from "./page.module.css";
-import Nav from "../../../components/Nav/Nav.jsx";
 import toast, { Toaster } from "react-hot-toast";
-import Counter from "../../../components/counter/counter.js";
+import Counter from "../../../components/counter/counter.jsx";
 import { checkAnswer } from "../../../math/checkAnswer.js";
 export default function Docs({ params }) {
   const [correct, setCorrect] = useState(0);
@@ -26,10 +25,6 @@ export default function Docs({ params }) {
       setCorrect(0);
     }
   }
-  if (!params.slug.length == 2) {
-    return <h1>Nav links to difficulties</h1>;
-  }
-
   useEffect(() => {
     async function getQA() {
       const questionRes = await question(params.slug[0], params.slug[1]);
@@ -41,7 +36,10 @@ export default function Docs({ params }) {
       }
     }
     getQA();
-  }, [completed]);
+  }, [completed, params.slug]);
+  if (!params.slug.length == 2) {
+    return <h1>Nav links to difficulties</h1>;
+  }
 
   let render;
   if (questionStr) {

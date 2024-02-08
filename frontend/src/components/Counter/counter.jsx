@@ -1,3 +1,4 @@
+"use client";
 import CounterCSS from "./Counter.module.css";
 import { Progress } from "@radix-ui/react-progress";
 
