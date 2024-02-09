@@ -1,4 +1,5 @@
-import NavCSS from "./Nav.module.css";
+"use client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,7 +7,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu.jsx";
+} from "@/components/ui/dropdown-menu";
 
 import Link from "next/link";
 
@@ -35,31 +36,29 @@ const navLinks = [
 
 export default function Nav() {
   return (
-    <div className={NavCSS.navBox}>
-      <ul className={NavCSS.links}>
-        {navLinks.map((link, index) => {
-          return (
-            <li className={NavCSS.link} key={link.name + index}>
-              <DropdownMenu>
-                <DropdownMenuTrigger>{link.name}</DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuLabel>Difficulties</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href={link.href + link.difficulties[0]}>Easy</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Link href={link.href + link.difficulties[1]}>Medium</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Link href={link.href + link.difficulties[2]}>Hard</Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <nav className="flex justify-center">
+      {navLinks.map((link) => {
+        return (
+          <div>
+            <DropdownMenu key={link.name}>
+              <DropdownMenuTrigger>{link.name}</DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>Difficulties</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link href={link.href + link.difficulties[0]}>Easy</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href={link.href + link.difficulties[1]}>Medium</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href={link.href + link.difficulties[2]}>Hard</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        );
+      })}
+    </nav>
   );
 }

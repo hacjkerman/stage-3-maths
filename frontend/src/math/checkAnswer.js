@@ -1,4 +1,4 @@
-export async function checkAnswer(newAnswer, answer) {
+export function checkAnswer(newAnswer, answer) {
   if (answer === newAnswer) {
     return true;
   } else {

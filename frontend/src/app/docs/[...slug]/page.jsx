@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import question from "../../../components/question/Question.jsx";
-import PageCSS from "./page.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Counter from "../../../components/Counter/Counter.jsx";
 import { checkAnswer } from "../../../math/checkAnswer.js";
@@ -43,16 +42,15 @@ export default function Docs({ params }) {
 
   let render;
   if (questionStr) {
-    console.log(questionStr);
     render = (
-      <div className={PageCSS.questionBox}>
-        <div className={PageCSS.question}>{questionStr}</div>
+      <div>
+        <div>{questionStr}</div>
       </div>
     );
   }
   return (
     <>
-      <div className={PageCSS.main}>
+      <div>
         <Toaster />
         <Counter correct={correct} />
         {render}
@@ -61,11 +59,8 @@ export default function Docs({ params }) {
             type="number"
             name="answer"
             placeholder="Enter your answer here"
-            className={PageCSS.inputBox}
           />
-          <button type="submit" className={PageCSS.submitButton}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </>
