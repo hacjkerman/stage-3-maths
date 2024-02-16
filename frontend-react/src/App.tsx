@@ -1,10 +1,13 @@
 import Main from "./components/Main/Main";
 import { Navbar } from "./components/Navbar/navbar";
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="">
       <Navbar />
-      <Main />
+      <Routes>
+        <Route path="/" element={<Main />}></Route>
+      </Routes>
     </div>
   );
 }
