@@ -11,7 +11,7 @@ const topics = {
 export default async function Question(topic, difficulty) {
   let questions = topics[topic].function(difficulty);
   let answer = questions.answer;
-  let questionStr = null;
+  let questionStr = undefined;
   if (questions !== undefined) {
     questionStr =
       questions.firstNum.toString() +

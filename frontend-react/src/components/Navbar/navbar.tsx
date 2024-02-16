@@ -7,25 +7,27 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
+import { Link } from "react-router-dom";
+
 const navLinks = [
   {
     name: "Addition",
-    href: "/docs/addition/",
+    href: "/addition/",
     difficulties: ["easy", "medium", "hard"],
   },
   {
     name: "Subtraction",
-    href: "/docs/subtraction/",
+    href: "/subtraction/",
     difficulties: ["easy", "medium", "hard"],
   },
   {
     name: "Division",
-    href: "/docs/division/",
+    href: "/division/",
     difficulties: ["easy", "medium", "hard"],
   },
   {
     name: "Multiplication",
-    href: "/docs/multiplication/",
+    href: "/multiplication/",
     difficulties: ["easy", "medium", "hard"],
   },
 ];
@@ -34,11 +36,15 @@ export function Navbar() {
   return (
     <nav className="flex w-full justify-center py-4">
       {navLinks.map((link) => {
+        const easyPath = link.href + link.difficulties[0];
+        const mediumPath = link.href + link.difficulties[1];
+        const hardPath = link.href + link.difficulties[2];
+        console.log(easyPath);
         return (
           <div className="flex px-1">
             <DropdownMenu key={link.name}>
               <DropdownMenuTrigger>
-                <button className="gap-4 inline-flex h-9 items-center justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100/50 focus:bg-gray-100/50 focus:outline-none">
+                <button className="gap-4 inline-flex h-9 items-center justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100/50 focus:bg-gray-100/50 focus:outline-none xs: text-xs">
                   {link.name}
                 </button>
               </DropdownMenuTrigger>
@@ -46,13 +52,13 @@ export function Navbar() {
                 <DropdownMenuLabel>Difficulties</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <a href={link.href + link.difficulties[0]}>Easy</a>
+                  <Link to={easyPath}>Easy</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href={link.href + link.difficulties[1]}>Medium</a>
+                  <Link to={mediumPath}>Medium</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href={link.href + link.difficulties[2]}>Hard</a>
+                  <Link to={hardPath}>Hard</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

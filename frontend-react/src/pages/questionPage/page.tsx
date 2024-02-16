@@ -7,13 +7,13 @@ import { checkAnswer } from "../../math/checkAnswer.js";
 import { QuestionBox } from "../../components/questionBox/questionBox";
 
 interface prop {
-  topic: string;
-  difficulty: string;
+  topic: string | undefined;
+  difficulty: string | undefined;
 }
 
 export default function QuestionPage(props: prop) {
   const [correct, setCorrect] = useState(0);
-  const [questionStr, setQuestionStr] = useState<string | null>(null);
+  const [questionStr, setQuestionStr] = useState<string | undefined>(undefined);
   const [answer, setAnswer] = useState("");
   const [completed, setCompleted] = useState(false);
   function onSubmit(event: any) {
@@ -22,6 +22,11 @@ export default function QuestionPage(props: prop) {
     // CHECK ANSWER
     const response = checkAnswer(Number(num), answer);
     if (response) {
+      if (correct >= 5) {
+        toast.success(
+          `${props.topic} topic of ${props.difficulty} has been completed! Please move on to the next difficulty or topic!`
+        );
+      }
       toast.success("Correct Answer!");
       setCompleted(true);
       setCorrect(correct + 1);
@@ -54,7 +59,7 @@ export default function QuestionPage(props: prop) {
   }
   return (
     // flex justify-center items-center w-screen h-screen
-    <div className="p-4 border border-slate-200 border-gray-200 rounded-lg w-full max-w-sm flex flex-col justify-center items-center items-start gap-4 dark:border-slate-800 ">
+    <div className="p-4 border border-gray-200 rounded-lg w-full max-w-sm flex flex-col justify-center items-center gap-4 dark:border-slate-800 xs: p-4">
       <Toaster />
       <Counter correct={correct} />
       {render}
