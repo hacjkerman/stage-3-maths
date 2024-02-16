@@ -59,7 +59,7 @@ export default function QuestionPage(props: prop) {
   }
   return (
     // flex justify-center items-center w-screen h-screen
-    <div className="p-4 border border-slate-200 border-gray-200 rounded-lg w-full max-w-sm flex flex-col justify-center items-center items-start gap-4 dark:border-slate-800 ">
+    <div className="p-4 border border-gray-200 rounded-lg w-full max-w-sm flex flex-col justify-center items-center gap-4 dark:border-slate-800">
       <Toaster />
       <Counter correct={correct} />
       {render}
