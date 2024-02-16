@@ -1,8 +1,10 @@
-import Nav from "./components/Nav/Nav";
+import Main from "./components/Main/Main";
+import { Navbar } from "./components/Navbar/navbar";
 function App() {
   return (
     <div className="">
-      <Nav />
+      <Navbar />
+      <Main />
     </div>
   );
 }
