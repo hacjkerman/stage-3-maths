@@ -22,6 +22,11 @@ export default function QuestionPage(props: prop) {
     // CHECK ANSWER
     const response = checkAnswer(Number(num), answer);
     if (response) {
+      if (correct >= 5) {
+        toast.success(
+          `${props.topic} topic of ${props.difficulty} has been completed! Please move on to the next difficulty or topic!`
+        );
+      }
       toast.success("Correct Answer!");
       setCompleted(true);
       setCorrect(correct + 1);
