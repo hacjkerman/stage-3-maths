@@ -4,7 +4,6 @@ import { generateMinQuestion } from "../math/subtraction.js";
 import { checkAnswer } from "../math/checkAnswer.js";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import PageCSS from "./page.module.css";
 import { generateDivQuestion } from "../math/division.js";
 import { generateMultQuestion } from "../math/multiplication.js";
 import Counter from "../components/Counter/Counter.jsx";
@@ -55,11 +54,12 @@ export default function Page() {
 
   let render;
   if (question) {
-    render = <div className={PageCSS.questionBox}>{question}</div>;
+    render = <div>{question}</div>;
   }
   return (
-    <>
-      <div className={PageCSS.main}>
+    <main>
+      home
+      {/* <div>
         <Toaster />
         <Counter correct={correct} />
         <div>{render}</div>
@@ -68,13 +68,10 @@ export default function Page() {
             type="number"
             name="answer"
             placeholder="Enter your answer here"
-            className={PageCSS.inputBox}
           />
-          <button type="submit" className={PageCSS.submitButton}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </form>
-      </div>
-    </>
+      </div> */}
+    </main>
   );
 }

@@ -7,9 +7,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import Link from "next/link";
+} from "../ui/dropdown-menu";
 
 const navLinks = [
   {
@@ -45,15 +43,9 @@ export default function Nav() {
               <DropdownMenuContent>
                 <DropdownMenuLabel>Difficulties</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Link href={link.href + link.difficulties[0]}>Easy</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href={link.href + link.difficulties[1]}>Medium</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href={link.href + link.difficulties[2]}>Hard</Link>
-                </DropdownMenuItem>
+                <DropdownMenuItem>Easy </DropdownMenuItem>
+                <DropdownMenuItem>Medium </DropdownMenuItem>
+                <DropdownMenuItem>Hard </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

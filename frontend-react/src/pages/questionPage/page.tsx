@@ -1,15 +1,22 @@
 "use client";
 import { useState, useEffect } from "react";
-import question from "../../../components/question/Question.jsx";
+import question from "../../components/questionBox/Question";
 import toast, { Toaster } from "react-hot-toast";
-import Counter from "../../../components/Counter/Counter.jsx";
-import { checkAnswer } from "../../../math/checkAnswer.js";
-export default function Docs({ params }) {
+import Counter from "../../components/Counter/Counter";
+import { checkAnswer } from "../../math/checkAnswer.js";
+import { QuestionBox } from "../../components/questionBox/questionBox";
+
+interface prop {
+  topic: string;
+  difficulty: string;
+}
+
+export default function QuestionPage(props: prop) {
   const [correct, setCorrect] = useState(0);
-  const [questionStr, setQuestionStr] = useState("");
+  const [questionStr, setQuestionStr] = useState<string | null>(null);
   const [answer, setAnswer] = useState("");
   const [completed, setCompleted] = useState(false);
-  function onSubmit(event) {
+  function onSubmit(event: any) {
     event.preventDefault();
     const num = event.target[0].value;
     // CHECK ANSWER
@@ -26,7 +33,7 @@ export default function Docs({ params }) {
   }
   useEffect(() => {
     async function getQA() {
-      const questionRes = await question(params.slug[0], params.slug[1]);
+      const questionRes = await question(props.topic, props.difficulty);
       console.log(questionRes);
       if (questionRes !== undefined) {
         setQuestionStr(questionRes.questionStr);
@@ -35,10 +42,7 @@ export default function Docs({ params }) {
       }
     }
     getQA();
-  }, [completed, params.slug]);
-  if (!params.slug.length == 2) {
-    return <h1>Nav links to difficulties</h1>;
-  }
+  }, [completed, props]);
 
   let render;
   if (questionStr) {
@@ -49,20 +53,14 @@ export default function Docs({ params }) {
     );
   }
   return (
-    <>
-      <div>
-        <Toaster />
-        <Counter correct={correct} />
-        {render}
-        <form onSubmit={onSubmit}>
-          <input
-            type="number"
-            name="answer"
-            placeholder="Enter your answer here"
-          />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </>
+    // flex justify-center items-center w-screen h-screen
+    <div className="p-4 border border-slate-200 border-gray-200 rounded-lg w-full max-w-sm flex flex-col justify-center items-center items-start gap-4 dark:border-slate-800 ">
+      <Toaster />
+      <Counter correct={correct} />
+      {render}
+      <form onSubmit={onSubmit}>
+        <QuestionBox />
+      </form>
+    </div>
   );
 }
