@@ -1,6 +1,6 @@
-import { difficulties } from "./difficulties.js";
+import { divisionDifficulties } from "./difficulties.js";
 export function generateDivQuestion(difficulty) {
-  const num = difficulties[difficulty];
+  const num = divisionDifficulties[difficulty];
   // MAYBE MORE COMPLICATED THAN THIS
   // IF DOING WHOLE NUMBER DIVISION
   let firstNum = Math.ceil(Math.random() * num);
