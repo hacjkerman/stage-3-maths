@@ -44,7 +44,7 @@ export function Navbar() {
           <div className="flex px-1">
             <DropdownMenu key={link.name}>
               <DropdownMenuTrigger>
-                <button className="gap-4 inline-flex h-9 items-center justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100/50 focus:bg-gray-100/50 focus:outline-none">
+                <button className="gap-4 inline-flex h-9 items-center justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100/50 focus:bg-gray-100/50 focus:outline-none xs: text-xs">
                   {link.name}
                 </button>
               </DropdownMenuTrigger>
